@@ -1,0 +1,11 @@
+{% extends 'etudiant/layout.html.twig' %}
+
+{% block title %}{{ parent() }} - Accueil{% endblock %}
+
+{% block body %}
+    <h2>Bienvenue sur la page d'accueil</h2>
+    <p>Contenu de la page d'accueil</p>
+
+    {# Affichage du contenu de list.html.twig sans le modifier #}
+    {{ render(path('Liste')) }}
+{% endblock %}

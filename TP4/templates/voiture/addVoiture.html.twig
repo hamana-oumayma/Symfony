@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Ajouter une Voiture</h1>
+
+    <form method="post">
+        {{ form_widget(formV) }}
+        <br>
+        <button type="submit" class="btn btn-success">
+            <i class="fas fa-save me-2"></i>Ajouter la voiture
+        </button>
+        <a href="{{ path('app_voiture') }}" class="btn btn-secondary">
+            <i class="fas fa-arrow-left me-2"></i>Retour
+        </a>
+    </form>
+{% endblock %}

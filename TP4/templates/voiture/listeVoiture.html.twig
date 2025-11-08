@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Liste des voitures</h1>
+    <table border="1">
+        <tr>
+            <td>Serie</td>
+            <td>Date Mise en Marche</td>
+            <td>Modele</td>
+            <td>Actions</td>
+        </tr>
+        {% for v in listeVoiture %}
+            <tr>
+                <td>{{ v.serie }}</td>
+                <td>{{ v.dateMiseEnMarche | date }}</td>
+                <td>{{ v.modele }}</td>
+                <td>
+                    <a href="{{ path('voiture_delete', {'id': v.id}) }}">Supprimer</a>
+                    <a href="{{ path('voiture_update', {'id': v.id}) }}">Mettre à jour</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <a href="{{ path('add_voiture') }}">Ajouter une voiture</a>
+{% endblock %}

@@ -1,0 +1,26 @@
+<h1>Voitures par modèle</h1>
+
+<form method="get">
+    <select name="modele">
+        <option value="">-- Sélectionner un modèle --</option>
+        {% for m in modeles %}
+            <option value="{{ m.id }}" {% if m.id == selectedModele %}selected{% endif %}>
+                {{ m.libelle }}
+            </option>
+        {% endfor %}
+    </select>
+    <button type="submit">Filtrer</button>
+</form>
+
+{% if voitures %}
+    <h2>Résultats :</h2>
+    <ul>
+        {% for v in voitures %}
+            <li>{{ v.serie }} | {{ v.dateMiseEnMarche|date('Y-m-d') }} | {{ v.modeleEntity.libelle }} | {{ v.prixJour }}€</li>
+        {% endfor %}
+    </ul>
+{% elseif selectedModele %}
+    <p>Aucune voiture trouvée pour ce modèle.</p>
+{% endif %}
+
+<a href="{{ path('app_voiture') }}">Retour à la liste complète</a>
